@@ -23,6 +23,8 @@ pipeline {
                 subject: 'Build Successful',
                 body: 'The build was successful.'
             )
+            sh '''
+            curl -H "Content-Type: application/json" -X POST -d '{"text":"Build correcta"}' https://discord.com/api/webhooks/1506417334355624028/taEWZXj0eqP9Bspw5QsfsZmsBG1mxc6-LuJbysl_3bO1CFZa8BGJEFMRs8sArMC4H6Xn'''
         }
         failure {
             mail(
@@ -30,6 +32,8 @@ pipeline {
                 subject: 'Build Failed',
                 body: 'The build failed. Please check the Jenkins console for details.'
             )
+                        sh '''
+            curl -H "Content-Type: application/json" -X POST -d '{"text":"Build incorrecta"}' https://discord.com/api/webhooks/1506417334355624028/taEWZXj0eqP9Bspw5QsfsZmsBG1mxc6-LuJbysl_3bO1CFZa8BGJEFMRs8sArMC4H6Xn'''
         }
         always {
             junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
