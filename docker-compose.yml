@@ -4,15 +4,15 @@ services:
 
   backend:
     build:
-      context: ./backend
-    container_name: backend-app
+      context: ../practica-jenkins
+    container_name: backend-prueba
 
     ports:
-      - "8081:8081"
+      - "8081:9000"
 
   jenkins:
     image: jenkins/jenkins:lts
-    container_name: jenkins
+    container_name: jenkins-prueba
 
     ports:
       - "8080:8080"
