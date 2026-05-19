@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Permisos') {
+            steps {
+                sh 'chmod +x mvnw'
+            }
+        }
+
         stage('Build and Test') {
             steps {
                 sh './mvnw clean verify'
